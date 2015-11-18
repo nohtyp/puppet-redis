@@ -1,0 +1,12 @@
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - "%{clientcert}"
+  - common
+
+:yaml:
+  :datadir: '/vagrant/hieradata'
+
+:merge_behavior: deeper
