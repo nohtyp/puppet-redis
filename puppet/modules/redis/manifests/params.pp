@@ -1,13 +1,34 @@
 class redis::params {
-$redis_pkgs   = ['redis']
-$redis_config_path          = '/etc/redis.conf'
-$redis_sentinel_config_path = '/etc/redis-sentinel.conf'
-$redis_sentinel_service     = 'redis-sentinel'
-$redis_service              = 'redis'
 $redis_user                 = 'redis'
 $redis_group                = 'redis'
 $use_hiera                  = false
-$use_sentinel_hiera         = true
+$use_sentinel_hiera         = false
+
+case $::osfamily {
+  'RedHat': {
+    $redis_package              = 'redis'
+    $redis_service              = 'redis'
+    $redis_sentinel_service     = 'redis-sentinel'
+    $redis_config_path          = '/etc/redis.conf'
+    $redis_sentinel_config_path = '/etc/redis-sentinel.conf'
+   }
+  #'Debian': {
+  #  $redis_package              = 'redis-server'
+  #  $redis_service              = 'redis-server'
+  #  $redis_config_path          = '/etc/redis/redis.conf'
+  #  $redis_sentinel_config_path = '/etc/redis/redis-sentinel.conf'
+  #  $redis_sentinel_package     = 'redis-server'
+  #}
+  #'Suse': {
+  #  $redis_config_path          = '/etc/redis/redis-server.conf'
+  #  $redis_package              = 'redis'
+  #  $redis_sentinel_config_path = '/etc/redis/redis-sentinel.conf'
+  #  $redis_sentinel_package     = 'redis'
+  #}
+  default: {
+    fail "Operating system ${::operatingsystem} is not supported yet."
+   }
+ } 
 
 if $use_hiera {
   $redis_config                 = hiera("redis_config")
@@ -18,7 +39,7 @@ else {
   pidfile                       => '/var/run/redis/redis.pid',
   port                          => '6379',
   tcp-backlog                   => '511',
-  bind                          => "${::ipaddress_lo} ${::ipaddress_enp0s8}",
+  bind                          => "${::ipaddress_lo}",
   timeout                       => '0',
   tcp-keepalive                 => '0',
   loglevel                      => 'notice',
@@ -74,7 +95,7 @@ else {
   $redis_sentinel_conf = {
   port                               => '6379',
   dir                                => '/tmp',
-  'sentinel monitor mymaster'        => "${::ipaddress_enp0s8} 6379 2",
+  'sentinel monitor mymaster'        => "${::ipaddress_lo} 6379 2",
   'sentinel down-after-milliseconds' => 'mymaster 30000',
   'sentinel parallel-syncs'          => 'mymaster 1',
   'sentinel failover-timeout'        => 'mymaster 180000',
