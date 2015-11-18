@@ -5,7 +5,7 @@ class redis::service::redis_sentinel_service inherits params {
     name       => $::redis::redis_sentinel_service,
     hasstatus  => true,
     hasrestart => true,
-    require    => Package[$::redis::redis_pkgs],
+    require    => Package[$::redis::redis_package],
     subscribe  => File['Redis Sentinel config'],
   }
 }

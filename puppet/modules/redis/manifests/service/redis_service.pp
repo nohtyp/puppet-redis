@@ -5,7 +5,7 @@ class redis::service::redis_service inherits params {
     name       => $::redis::redis_service,
     hasstatus  => true,
     hasrestart => true,
-    require    => Package[$::redis::redis_pkgs],
+    require    => Package[$::redis::redis_package],
     subscribe  => File['Redis Service config'],
   }
 }

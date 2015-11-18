@@ -7,7 +7,7 @@ class redis::config::redis_config inherits params {
     mode    => '0644',
     owner   => $::redis::redis_user,
     group   => $::redis::redis_group,
-    require => Package[$::redis::redis_pkgs],
+    require => Package[$::redis::redis_package],
     content => template('redis/redis_config.erb'),
   }
 }
