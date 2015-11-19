@@ -38,11 +38,11 @@ in the correct file.
 
 #### Adding value to hash
 <pre>
-redis::redis_config: 
+redis_config: 
   bind: '127.0.0.1'
   daemonize: 'no'
 
-redis::redis_sentinel_conf:
+redis_sentinel_conf:
   port: '6379'
   dir: '/tmp'
   'sentinel monitor mymaster': "%{::ipaddress_lo} 6379 2"
@@ -51,10 +51,10 @@ redis::redis_sentinel_conf:
 
 #### Removing value from hash (if you don't provide the value then it will not exist in the file)
 <pre>
-redis::redis_config:
+redis_config:
   bind: '127.0.0.1'
 
-redis::redis_sentinel_conf:
+redis_sentinel_conf:
   port: '6379'
   'sentinel monitor mymaster': "%{::ipaddress_lo} 6379 2"
 </pre> 

@@ -1,20 +1,18 @@
 {
   "name": "nohtyp-redis",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "nohtyp",
   "summary": "This module will install and configure redis server.",
   "license": "Apache-2.0",
   "source": "https://github.com/nohtyp/puppet-redis",
   "project_page": "https://github.com/nohtyp/puppet-redis",
   "issues_url": "https://github.com/nohtyp/puppet-redis/issues",
-  "tags": ["redis"],
+  "tags": [
+    "redis"
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "7"
-      ],
-      "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7"
       ]

@@ -7,13 +7,11 @@
   "source": "https://github.com/nohtyp/puppet-redis",
   "project_page": "https://github.com/nohtyp/puppet-redis",
   "issues_url": "https://github.com/nohtyp/puppet-redis/issues",
-  "tags": ["redis"],
+  "tags": [
+    "redis"
+  ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "7"
-      ],
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7"
