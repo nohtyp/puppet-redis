@@ -1,4 +1,4 @@
-class redis::service::redis_sentinel_service inherits params {
+class redis::redis_sentinel_service inherits params {
 
   service {'Redis Sentinel Service':
     ensure     => running,

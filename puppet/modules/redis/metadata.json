@@ -1,6 +1,6 @@
 {
   "name": "nohtyp-redis",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "nohtyp",
   "summary": "This module will install and configure redis server.",
   "license": "Apache-2.0",
@@ -10,11 +10,7 @@
   "tags": ["redis"],
   "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "7"
-      ],
-      "operatingsystem": "CentOS",
+      "operatingsystem": "RedHat,CentOS",
       "operatingsystemrelease": [
         "7"
       ]

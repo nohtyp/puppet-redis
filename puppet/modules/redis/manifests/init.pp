@@ -48,10 +48,10 @@ $use_hiera                  = $redis::params::use_hiera,
 
 anchor {'redis::begin': } ->
   class {'::redis::install':} ->
-  class {'::redis::config::redis_config':} ->
-  class {'::redis::config::redis_sentinel_config':} ->
-  class {'::redis::service::redis_service':} ->
-  class {'::redis::service::redis_sentinel_service':}
+  class {'::redis::redis_config':} ->
+  class {'::redis::redis_sentinel_config':} ->
+  class {'::redis::redis_service':} ->
+  class {'::redis::redis_sentinel_service':}
 anchor {'redis::end':}
 
 }

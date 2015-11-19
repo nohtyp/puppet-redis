@@ -2,7 +2,7 @@ class redis::params {
 $redis_user                 = 'redis'
 $redis_group                = 'redis'
 $use_hiera                  = false
-$use_sentinel_hiera         = false 
+$use_sentinel_hiera         = false
 
 case $::osfamily {
   'RedHat': {
@@ -11,7 +11,7 @@ case $::osfamily {
     $redis_sentinel_service     = 'redis-sentinel'
     $redis_config_path          = '/etc/redis.conf'
     $redis_sentinel_config_path = '/etc/redis-sentinel.conf'
-   }
+  }
   #'Debian': {
   #  $redis_package              = 'redis-server'
   #  $redis_service              = 'redis-server'
@@ -28,19 +28,19 @@ case $::osfamily {
   #}
   default: {
     fail "Operating system ${::operatingsystem} is not supported yet."
-   }
- } 
+  }
+  }
 
 if $use_hiera {
-  $redis_config                 = hiera("redis::redis_config")
- }
+  $redis_config                 = hiera('redis::redis_config')
+  }
 else {
   $redis_config = {
   daemonize                     => 'no',
   pidfile                       => '/var/run/redis/redis.pid',
   port                          => '6379',
   tcp-backlog                   => '511',
-  bind                          => "${::ipaddress_lo}",
+  bind                          => "${::ipaddress_enp0s8}",
   timeout                       => '0',
   tcp-keepalive                 => '0',
   loglevel                      => 'notice',
@@ -90,17 +90,17 @@ else {
 }
 
 if $use_sentinel_hiera {
-  $redis_sentinel_conf          = hiera("redis::redis_sentinel_conf") 
- }
+  $redis_sentinel_conf          = hiera('redis::redis_sentinel_conf')
+  }
 else {
   $redis_sentinel_conf = {
   port                               => '6379',
   dir                                => '/tmp',
-  'sentinel monitor mymaster'        => "${::ipaddress_lo} 6379 2",
+  'sentinel monitor mymaster'        => "${::ipaddress_enp0s8} 6379 2",
   'sentinel down-after-milliseconds' => 'mymaster 30000',
   'sentinel parallel-syncs'          => 'mymaster 1',
   'sentinel failover-timeout'        => 'mymaster 180000',
   logfile                            => '/var/log/redis/sentinel.log',
   }
- }
+  }
 }
