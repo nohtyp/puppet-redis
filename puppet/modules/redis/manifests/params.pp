@@ -15,6 +15,7 @@ case $::osfamily {
   #'Debian': {
   #  $redis_package              = 'redis-server'
   #  $redis_service              = 'redis-server'
+  #  $redis_sentinel_service     = 'redis-server --sentinel'
   #  $redis_config_path          = '/etc/redis/redis.conf'
   #  $redis_sentinel_config_path = '/etc/redis/redis-sentinel.conf'
   #  $redis_sentinel_package     = 'redis-server'

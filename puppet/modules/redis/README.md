@@ -19,6 +19,30 @@ more in the upcoming releases.
 
 ## Usage
 
+This puppet module uses a hash with the defaults from the current version of redis for
+RedHat 7 family OS.  This module is pretty easy to use to manage the redis conf file
+because it uses the hash to build the file, which means that if you want to add a new
+entry to the redis.conf file, all you would need to do is add it to the hash.
+
+There are 2 ways of currently adding to the hash:
+1. Add/Delete/Modify value in params.pp file (This will make any system that applies this
+   module use those settings.  Usage: Use this option only if you want to apply the settings
+   to all machines).
+2. In the params.pp file set use_hiera and use_sentinel_hiera parameters to `true`.  This will
+   allow a more flexible configuration for you redis cluster.  To create a hash using the hiera
+   data:
+
+### Hiera config file for Redis system
+<pre>
+redis_config: 
+  bind: '127.0.0.1'
+  daemonize: 'no'
+
+redis_sentinel_conf:
+  port: '6379'
+  dir: '/tmp'
+  'sentinel monitor mymaster': "%{::ipaddress_lo} 6379 2"
+</pre> 
 
 ## Release Notes/Contributors/Etc **Optional**
 
