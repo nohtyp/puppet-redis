@@ -1,9 +1,9 @@
 ---
-redis_config: 
+redis::redis_config: 
   bind: '127.0.0.1'
   daemonize: 'no'
 
-redis_sentinel_conf:
+redis::redis_sentinel_conf:
   port: '6379'
   dir: '/tmp'
   'sentinel monitor mymaster': "%{::ipaddress_enp0s8} 6379 2"

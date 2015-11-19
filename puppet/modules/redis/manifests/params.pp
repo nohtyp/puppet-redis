@@ -2,7 +2,7 @@ class redis::params {
 $redis_user                 = 'redis'
 $redis_group                = 'redis'
 $use_hiera                  = false
-$use_sentinel_hiera         = false
+$use_sentinel_hiera         = false 
 
 case $::osfamily {
   'RedHat': {
@@ -32,7 +32,7 @@ case $::osfamily {
  } 
 
 if $use_hiera {
-  $redis_config                 = hiera("redis_config")
+  $redis_config                 = hiera("redis::redis_config")
  }
 else {
   $redis_config = {
@@ -90,7 +90,7 @@ else {
 }
 
 if $use_sentinel_hiera {
-  $redis_sentinel_conf          = hiera("redis_sentinel_conf") 
+  $redis_sentinel_conf          = hiera("redis::redis_sentinel_conf") 
  }
 else {
   $redis_sentinel_conf = {
