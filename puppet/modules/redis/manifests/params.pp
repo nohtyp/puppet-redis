@@ -3,7 +3,6 @@ $redis_user                 = 'redis'
 $redis_group                = 'redis'
 $use_hiera                  = false
 $use_sentinel_hiera         = false
-
 case $::osfamily {
   'RedHat': {
     $redis_package              = 'redis'
@@ -30,7 +29,6 @@ case $::osfamily {
     fail "Operating system ${::operatingsystem} is not supported yet."
   }
   }
-
 if $use_hiera {
   $redis_config                 = hiera('redis::redis_config')
   }
@@ -46,9 +44,9 @@ else {
   loglevel                      => 'notice',
   logfile                       => '/var/log/redis/redis.log',
   databases                     => '16',
-  save                          => '900 1',
-  save                          => '300 10',
-  save                          => '60 10000',
+  'save 900'                    => '1',
+  'save 300'                    => '10',
+  'save 60'                     => '10000',
   stop-writes-on-bgsave-error   => 'yes',
   rdbcompression                => 'yes',
   rdbchecksum                   => 'yes',
@@ -88,7 +86,6 @@ else {
   aof-rewrite-incremental-fsync => 'yes',
   }
 }
-
 if $use_sentinel_hiera {
   $redis_sentinel_conf          = hiera('redis::redis_sentinel_conf')
   }

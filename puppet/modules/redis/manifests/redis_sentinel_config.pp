@@ -1,4 +1,4 @@
-class redis::redis_sentinel_config inherits params {
+class redis::redis_sentinel_config inherits redis {
 
   file { 'Redis Sentinel config':
     ensure  => file,

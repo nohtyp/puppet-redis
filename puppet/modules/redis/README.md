@@ -61,4 +61,12 @@ redis::redis_sentinel_conf:
 
 ## Release Notes/Contributors/Etc **Optional**
 
-This is the first release of this module and I will be making adjustments soon.
+There is an issue with using hashes in ruby with the manifests and ERB templates.  To fix issue
+just make the key a unique value so that the erb template can parse hash correctly.
+
+Ex: save option for redis:
+
+  'save 900'                    => '1',
+  'save 300'                    => '10',
+  'save 60'                     => '10000',
+

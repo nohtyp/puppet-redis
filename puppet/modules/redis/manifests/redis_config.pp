@@ -1,4 +1,4 @@
-class redis::redis_config inherits params {
+class redis::redis_config inherits redis {
 
   file { 'Redis Service config':
     ensure  => file,

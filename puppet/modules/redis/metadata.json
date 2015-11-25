@@ -1,6 +1,6 @@
 {
   "name": "nohtyp-redis",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "nohtyp",
   "summary": "This module will install and configure redis server.",
   "license": "Apache-2.0",
