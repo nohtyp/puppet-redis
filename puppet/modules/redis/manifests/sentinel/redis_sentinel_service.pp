@@ -1,4 +1,4 @@
-class redis::redis_sentinel_service inherits redis {
+class redis::sentinel::redis_sentinel_service inherits redis {
 
   service {'Redis Sentinel Service':
     ensure     => running,

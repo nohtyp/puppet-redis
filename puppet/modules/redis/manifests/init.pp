@@ -47,11 +47,11 @@ $use_hiera                  = $redis::params::use_hiera,
 ) inherits redis::params {
 
 anchor {'redis::begin': } ->
-  class {'::redis::install':} ->
-  class {'::redis::redis_config':} ->
-  class {'::redis::redis_sentinel_config':} ->
-  class {'::redis::redis_service':} ->
-  class {'::redis::redis_sentinel_service':}
+  class {'::redis::redis::install':} ->
+  class {'::redis::redis::redis_config':} ->
+  class {'::redis::sentinel::redis_sentinel_config':} ->
+  class {'::redis::redis::redis_service':} ->
+  class {'::redis::sentinel::redis_sentinel_service':}
 anchor {'redis::end':}
 
 }

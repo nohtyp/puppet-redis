@@ -9,7 +9,7 @@ VAGRANT_TMP_NAME = "jkyle/centos-7.0-x86_64"
 VBGUI = false
 
 nodes = [
-  #{ :hostname => 'test',   :ip => '192.168.2.200', :box => 'jkyle/centos-7.0-x86_64' },
+  { :hostname => 'test',   :ip => '192.168.2.200', :box => 'jkyle/centos-7.0-x86_64' },
   { :hostname => 'test02', :ip => '192.168.2.201', :box => 'jkyle/centos-7.0-x86_64' },
   #{ :hostname => 'test02', :ip => '192.168.2.201', :box => 'ubuntu_124' },
   #{ :hostname => 'test03', :ip => '192.168.2.202', :box => 'jkyle/centos-7.0-x86_64' },

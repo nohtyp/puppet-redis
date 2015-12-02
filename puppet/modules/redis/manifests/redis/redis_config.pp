@@ -1,9 +1,9 @@
-class redis::redis_config inherits redis {
+class redis::redis::redis_config inherits redis {
 
   file { 'Redis Service config':
     ensure  => file,
     path    => $::redis::redis_config_path,
-    backup  => true,
+    #backup  => true,
     mode    => '0644',
     owner   => $::redis::redis_user,
     group   => $::redis::redis_group,

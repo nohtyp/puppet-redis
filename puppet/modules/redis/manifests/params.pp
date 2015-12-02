@@ -1,8 +1,8 @@
 class redis::params {
 $redis_user                 = 'redis'
 $redis_group                = 'redis'
-$use_hiera                  = false
-$use_sentinel_hiera         = false
+$use_hiera                  = true
+$use_sentinel_hiera         = true
 case $::osfamily {
   'RedHat': {
     $redis_package              = 'redis'

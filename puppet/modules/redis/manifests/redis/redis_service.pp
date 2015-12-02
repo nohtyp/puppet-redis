@@ -1,4 +1,4 @@
-class redis::redis_service inherits redis {
+class redis::redis::redis_service inherits redis {
 
   service {'Redis Service':
     ensure     => running,
