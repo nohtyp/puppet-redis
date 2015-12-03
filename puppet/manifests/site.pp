@@ -1,11 +1,7 @@
 node 'test02.familyguy.local' { 
-  include epel
-  include redis
-  include stdlib
+  include role::myredis
 }
 
 node 'test.familyguy.local' { 
-  include epel
-  include redis
-  include stdlib
+  include role::myredis
 }

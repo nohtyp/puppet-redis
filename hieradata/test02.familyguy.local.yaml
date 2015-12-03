@@ -58,3 +58,6 @@ redis::redis_sentinel_conf:
   'sentinel failover-timeout': 'mymaster 60000'
   'sentinel parallel-syncs':  'mymaster 2'
 
+myfirewall::myport:
+   - '6379'
+   - '26379'

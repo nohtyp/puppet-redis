@@ -9,4 +9,4 @@
 :yaml:
   :datadir: '/vagrant/hieradata'
 
-:merge_behavior: deeper
+#:merge_behavior: deeper
